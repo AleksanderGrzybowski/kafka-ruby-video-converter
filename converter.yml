@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: converter
+spec:
+  selector:
+    matchLabels:
+      app: converter
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: converter
+    spec:
+      containers:
+      - name: converter
+        image: converter
+        imagePullPolicy: Never
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uploader
+spec:
+  selector:
+    matchLabels:
+      app: uploader
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: uploader
+    spec:
+      containers:
+      - name: uploader
+        image: converter
+        command:
+        - sleep
+        - infinity
+        imagePullPolicy: Never
+
