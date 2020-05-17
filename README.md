@@ -7,6 +7,7 @@ This project is a simple video processing system with:
 * FFMpeg for video conversion
 * s3cmd for S3 operations
 
+To try it out:
 
 * `minikube start` - start Minikube machine
 * `./deploy-infra.sh` - deploy Kafka, Zookeeper, MinIO
